@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+
+{% block html_content %}
+<div class="container-fluid" align="left">
+    <form method="post" action="#">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-2"> Register</legend>
+
+            <div class="form-group col-sm-6">
+                {{ form.username.label(class="form-control-label") }}
+                {% if form.username.errors %}
+                {{ form.username(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.username.errors %}
+                    <span> {{ error }} </span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.username(class="form-control") }}
+                <small class="text-muted">Length 2-10</small>
+                {% endif %}
+
+            </div>
+
+            <div class="form-group col-sm-6">
+                {{ form.email.label(class="form-control-label") }}
+                {% if form.email.errors %}
+                {{ form.email(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.email.errors %}
+                    <span> {{ error }} </span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.email(class="form-control") }}
+                <small class="text-muted">xxxxxx@example.com</small>
+                {% endif %}
+            </div>
+            <div class="form-group col-sm-6">
+                {{ form.password.label(class="form-control-label") }}
+                {% if form.password.errors %}
+                {{ form.password(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.password.errors %}
+                    <span> {{ error }} </span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.password(class="form-control") }}
+                <small class="text-muted">Password should have minimum of 4 characters, at least one letter, one number and one special character.</small>
+                {% endif %}
+            </div>
+            <div class="form-group col-sm-6">
+                {{ form.confirm_password.label(class="form-control-label") }}
+                {% if form.confirm_password.errors %}
+                {{ form.confirm_password(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.confirm_password.errors %}
+                    <span> {{ error }} </span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.confirm_password(class="form-control") }}
+                <small class="text-muted">Password should have minimum of 4 characters, at least one letter, one number and one special character.</small>
+                {% endif %}
+            </div>
+            <div class="form-group col-sm-5">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </fieldset>
+    </form>
+
+    <div class="border-top " align="left">
+        <p class="col-sm-5"> Already Have an Account? <a href="{{ url_for('login') }}"> Login</a></p>
+    </div>
+
+</div>
+
+{% endblock %}

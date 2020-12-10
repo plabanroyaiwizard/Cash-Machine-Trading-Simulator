@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+
+{% block html_content %}
+<div class="container-fluid pt-2">
+    <blockquote class="blockquote">
+        <p>After the simulation for <strong>{{ form[-4] }}</strong> with an initial investment of ${{ form[0] }}.0, the Net Worth is ${{ form[-3] }}, <strong>{{ form[-2] }}</strong> and the average <strong>Returns are {{ form[-1] }}</strong>%</p>
+    </blockquote>
+
+    <table class="table" id="trade_table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Stock</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Price</th>
+            <th scope="col">Date</th>
+            <th scope="col">Type</th>
+            <th scope="col">Stock Balance</th>
+            <th scope="col">Budget</th>
+            <th scope="col">Net Worth</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for result in results %}
+        <tr>
+            <td>{{ result['stocks'] }}</td>
+            <td>${{ result['amount'] }}</td>
+            <td>${{ result['price'] }}</td>
+            <td>{{ result['date'] }}</td>
+            <td>{{ result['type'] }}</td>
+            <td>{{ result['stock_balance'] }}</td>
+            <td>${{ result['budget'] }}</td>
+            <td>${{ result['net_worth'] }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script>
+  $(document).ready(function() {
+      $('#trade_table').DataTable();
+      console.log('In DOM');
+     });
+
+</script>
+{% endblock %}
