@@ -8,7 +8,7 @@ according to user preferences.
 $ git clone plaban1407/Cash-Machine-Trading-Simulator
 
 # Code Status
-_Build_ 'Passing'
+_Build_ `Passing`
 
 # License
 **Open Source**
